@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    EntandoApp: {{ .Values.appName }}
+  name: {{ .Values.appName }}-server-pvc
+  namespace: {{ .Values.nameSpace }}
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    limits:
+      storage: 2Gi
+    requests:
+      storage: 512Mi

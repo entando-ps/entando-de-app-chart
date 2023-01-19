@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    EntandoApp: {{ .Values.appName }}
+  name: {{ .Values.appName }}-service
+  namespace: {{ .Values.nameSpace }}
+spec:
+  ports:
+  - name: server-port
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    EntandoApp: {{ .Values.appName }}
+  type: ClusterIP

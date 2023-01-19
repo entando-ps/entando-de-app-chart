@@ -1,0 +1,34 @@
+# Default values for de-app-standalone.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+appName: prcura-xyz
+appHost: prcura-xyz.giustizia.it
+nameSpace: mdg-prcura-xyz
+
+image: registry.hub.docker.com/entando/entando-de-app-wildfly:7.1.3
+
+# Secret contenete chiave privata e certificato TLS per il dominio *.giustizia.it
+secretTls: prcura-xyz-tls
+
+# Redis Configuration
+# impostare a true per attivare redis
+redisActive: 'true'
+# NOTA se si utilizza un singolo nodo di redis utilizzare questa variabile e modificare il deployment di conseguenza
+# redisAddress: 'redis://redis.mdg-proc-bologna-coll-new.svc.cluster.local:6379'
+redisAddresses: 'redis-node-0.namespace.svc.cluster.local:26379,redis-node-1.namespace.svc.cluster.local:26379,redis-node-2.namespace.svc.cluster.local:26379'
+
+# Keycloak Configuration
+kcUrl: https://keycloak.giustizia.it/auth
+kcRealm: entando
+kcClientId: clientid
+kcClientSecret: secret
+
+
+servDbUrl: jdbc:mysql://1.2.3.4:3306/serv_db
+servDbUser: serv_db_user
+servDbPass: password
+
+portDbUrl: jdbc:mysql://1.2.3.4:3306/port_db
+portDbUser: port_db_user
+portDbpass: password
