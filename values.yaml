@@ -8,9 +8,6 @@ nameSpace: mdg-prcura-xyz
 
 image: registry.hub.docker.com/entando/entando-de-app-wildfly:7.1.3
 
-# Secret contenete chiave privata e certificato TLS per il dominio *.giustizia.it
-secretTls: prcura-xyz-tls
-
 # Redis Configuration
 # impostare a true per attivare redis
 redisActive: 'true'
