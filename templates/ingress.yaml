@@ -6,7 +6,6 @@ metadata:
   name: {{ .Values.appName }}-ingress
   namespace: {{ .Values.nameSpace }}
 spec:
-  ingressClassName: nginx
   tls:
   - hosts:
     - {{ .Values.appHost }}
