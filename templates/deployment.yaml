@@ -54,13 +54,13 @@ spec:
           valueFrom:
             secretKeyRef:
               key: username
-              name: {{ .Values.appName }}-db-secret
+              name: {{ .Values.appName }}-portdb-secret
               optional: false
         - name: PORTDB_PASSWORD
           valueFrom:
             secretKeyRef:
               key: password
-              name: {{ .Values.appName }}-db-secret
+              name: {{ .Values.appName }}-portdb-secret
               optional: false
         - name: PORTDB_CONNECTION_CHECKER
           value: org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker
@@ -72,13 +72,13 @@ spec:
           valueFrom:
             secretKeyRef:
               key: username
-              name: {{ .Values.appName }}-db-secret
+              name: {{ .Values.appName }}-servdb-secret
               optional: false
         - name: SERVDB_PASSWORD
           valueFrom:
             secretKeyRef:
               key: password
-              name: {{ .Values.appName }}-db-secret
+              name: {{ .Values.appName }}-servdb-secret
               optional: false
         - name: SERVDB_CONNECTION_CHECKER
           value: org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker
@@ -97,7 +97,7 @@ spec:
         - name: JGROUPS_JOIN_TIMEOUT
           value: "3000"
         - name: REDIS_ACTIVE
-          value: {{ .Values.redisActive }}
+          value: "{{ .Values.redisActive }}"
         # - name: REDIS_ADDRESS
         #   value: {{ .Values.redisAddress }}
         - name: REDIS_ADDRESSES
