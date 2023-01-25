@@ -96,12 +96,14 @@ spec:
           value: {{ randAlphaNum 10 }}
         - name: JGROUPS_JOIN_TIMEOUT
           value: "3000"
+        {{- if eq .Values.redisActive "true" }}
         - name: REDIS_ACTIVE
           value: "{{ .Values.redisActive }}"
         # - name: REDIS_ADDRESS
-        #   value: {{ .Values.redisAddress }}
+        #   value: 'redis.{{ .Values.nameSpace }}.svc.cluster.local:6379'
         - name: REDIS_ADDRESSES
-          value: {{ .Values.redisAddresses }}
+          value: 'redis-node-0.redis-headless.{{ .Values.nameSpace }}.svc.cluster.local:26379,redis-node-1.redis-headless.{{ .Values.nameSpace }}.svc.cluster.local:26379,redis-node-2.redis-headless.{{ .Values.nameSpace }}.svc.cluster.local:26379'
+        {{- end }}
         image: {{ .Values.image }}
         imagePullPolicy: IfNotPresent
         livenessProbe:
